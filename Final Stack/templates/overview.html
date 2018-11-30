@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-3Ivskwia8Fui5tbQi+RW4DgTkJ8d+hW7mLe7Yk89ibmD9482VECh0WFof8kIEjwI" crossorigin="anonymous">
+  <title>Project Overview</title>
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+
+  <!-- Custom markers -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/leaflet.extra-markers.min.css">
+
+
+  <!--D3 cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Data Jobs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html#scrape">Scrape</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html#map-area">Map</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html#graph">In Demand Skills</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Project Overview</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <section id="About Us">
+    <h1>About Us</h1>
+    <p>We developed this project UCSD Data Science and Visualization Bootcamp. The ask was to develop a full-stack web application.</p>
+    <h3>Team Members:</h3>
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="https://avatars1.githubusercontent.com/u/35678644?s=460&v=4" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Jasmin Johal</h5>
+          <p class="card-text">GitHub: <a href="https://github.com/jjrx">https://github.com/jjrx</a></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://avatars3.githubusercontent.com/u/35179991?s=460&v=4" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Anthony Phelps</h5>
+          <p class="card-text">GitHub: <a href="https://github.com/tonyphelps">https://github.com/tonyphelps</a></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://avatars2.githubusercontent.com/u/37319182?s=460&v=4" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Rama Pranadinata</h5>
+          <p class="card-text">GitHub: <a href="https://github.com/Pranadi777">https://github.com/Pranadi777</a></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://avatars2.githubusercontent.com/u/31947817?s=460&v=4" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Robina Shaheen</h5>
+          <p class="card-text">GitHub: <a href="https://github.com/shaheen19/">https://github.com/shaheen19</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools">
+  <h1>Languages and tools we used</h1>
+  <ul>
+    <li>for web scraping:</li>
+    <ul>
+      <li>Beautiful Soup</li>
+      <li>Splinter</li>
+      <li>Selenium</li>
+      <li>Python</li>
+      <li>iPython</li>
+    </ul>
+    <li>for data management:</li>
+    <ul>
+      <li>MongoDB</li>
+      <li>PyMongo</li>
+    </ul>
+    <li>for data visualization and web design:</li>
+    <ul>
+      <li>HTML/CSS</li>
+      <li>JavaScript</li>
+      <li>Leaflet</li>
+      <li>Plotly</li>
+    </ul>
+    <li>for web deployment:</li>
+    <ul>
+      <li>Heroku</li>
+      <li>Flask</li>
+    </ul>
+  </ul>
+</section>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--   <script src="https://unpkg.com/scrollreveal"></script> -->
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+
+  <!-- Get minor updates and patch fixes within a major version -->
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14/dist/smooth-scroll.polyfills.min.js"></script>
+
+  <!-- Get patch fixes within a minor version -->
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14.0/dist/smooth-scroll.polyfills.min.js"></script>
+
+  <!-- Get a specific version -->
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+  <!-- API Key -->
+<!--   <script type="text/javascript" src="../static/js/config.js"></script> -->
+  <!-- Our JS -->
+  <script type="text/javascript" src="../static/js/us-states.js"></script>
+  <script src="../static/js/leaflet.extra-markers.min.js"></script>
+  <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script> -->
+  <script type="text/javascript" src="../static/js/app.js"></script>
+</body>
+</html>

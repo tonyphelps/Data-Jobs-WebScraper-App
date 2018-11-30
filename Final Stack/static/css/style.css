@@ -1,0 +1,74 @@
+#tagline {
+	color: black;
+}
+
+.alert {
+	width: 60%;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+#job-pick {
+	padding: 10px 0 40px 0;
+}
+
+#job-pick-info {
+	margin: 0px 200px 10px 200px;
+}
+
+#map-area {
+	padding: 30px 0 30px 0;
+}
+
+#map {
+	height: 800px;
+	width: 1000px;
+	margin: auto;
+}
+
+#landing {
+    background-image: url(https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-position: center;
+    background-size: cover;
+    opacity: 0.9;
+    height: 55vh;
+ }
+
+ #section {
+ 	height: 1000px;
+ }
+
+ #job-listing {
+ 	overflow-y: auto;
+ }
+
+ .job-listing {
+ 	display: inline-block;
+ 	vertical-align: top;
+ 	width: 300px;
+ 	height: 150px;
+ 	padding-top: 10px;
+ 	border: 2px solid white;
+ 	color: white;
+
+ }
+
+ .job-container {
+ 	text-align: center;
+ 	padding: 25px 0 35px 0;
+ 	background-color: #e9ecef;
+ }
+
+ .icon {
+ 	height: 25px;
+ 	padding-bottom: 5px;
+ }
+
+#graph {
+	background-color: #e9ecef;
+	padding: 40px 0 30px 0;
+}
+.plot {
+	width: 1000px;
+	margin: auto;
+}

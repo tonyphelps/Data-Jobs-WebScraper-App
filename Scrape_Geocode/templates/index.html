@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Basic Charts</title>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    </head>
+    <body>
+
+    <div class="container">
+
+        <div class="jumbotron text-center">
+            <h1>Scrape</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape</a></p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+
+                <div id="plot">
+                    <!--This is where the graph will show-->
+                    
+                </div>
+
+                <script>
+                    var collection = '{{list_coll|tojson}}';
+                    var collection2 = '{{list_coll2|tojson}}';
+
+                    var parsed = JSON.parse(collection)
+                    var parsed2 = JSON.parse(collection2)
+
+                    console.log(collection);
+                    console.log(parsed);
+
+                    console.log(collection2);
+                    console.log(parsed2);
+
+
+                    var count_skill_dict = {
+                        'Excel' : 0,
+                        'SQL': 0,
+                        'mySQL' : 0,
+                        'Python': 0,
+                        'JavaScript': 0,
+                        'Java': 0,
+                        'pandas': 0,
+                        'html': 0,
+                        'MongoDB': 0,
+                        'CSS': 0,
+                        'Leaflet': 0,
+                        'Numpy': 0,
+                        'VBA': 0,
+                        'd3': 0,
+                        'matplotlib': 0,
+                        'Tableau': 0,
+                        'Machine Learning': 0,
+                        'Bachelors': 0,
+                        'Masters': 0,
+                        'R':0,
+                        'PhD':0,
+                        'Plotly':0
+                        };
+
+                    var count_skill_dict2 = {
+                        'Excel' : 0,
+                        'SQL': 0,
+                        'mySQL' : 0,
+                        'Python': 0,
+                        'JavaScript': 0,
+                        'Java': 0,
+                        'pandas': 0,
+                        'html': 0,
+                        'MongoDB': 0,
+                        'CSS': 0,
+                        'Leaflet': 0,
+                        'Numpy': 0,
+                        'VBA': 0,
+                        'd3': 0,
+                        'matplotlib': 0,
+                        'Tableau': 0,
+                        'Machine Learning': 0,
+                        'R':0,
+                        'Bachelors': 0,
+                        'Masters': 0,
+                        'PhD':0,
+                        'Plotly':0
+                        };
+                    
+                    parsed.forEach(function(list){
+                        list.forEach(function(element){
+                            count_skill_dict[element] += 1;
+                        });
+                    });
+
+
+                    parsed2.forEach(function(list2){
+                        list2.forEach(function(element2){
+                            count_skill_dict2[element2] += 1;
+                        });
+                    });
+
+                    var letters = Object.keys(count_skill_dict);
+                    var counts = Object.values(count_skill_dict);
+                    console.log(letters,counts);
+
+                    var letters2 = Object.keys(count_skill_dict2);
+                    var counts2 = Object.values(count_skill_dict2);
+                    console.log(letters2,counts2);
+
+
+                    var trace1 = {
+                        x: letters,
+                        y: counts,
+                        type: 'bar',
+                        name: "Data Analyst Skills"
+                        };
+
+                    var trace2 = {
+                        x: letters2,
+                        y: counts2,
+                        type: 'bar',
+                        name: "Data Scientist Skills"
+                        };
+
+                    var layout = {
+                        barmode: 'group'};
+
+                    var data = [trace1, trace2];
+                    Plotly.newPlot('plot',data, layout);
+
+                   
+                </script>
+            <!--This is the div for col-md-10-->
+            </div>
+
+            <!--this is the div for col-md-2-->
+            <div class="col-md-2 text-center">
+
+                
+                <h4>Number of Analyst Jobs Scraped</h4>
+                <h4 id="array_lengths"></h4>
+
+                <h4>Number of Scientist Jobs Scraped</h4>
+                <h4 id="array_lengths2"></h4>
+
+                <script>
+                    var analyst_count = parsed.length;
+                    document.getElementById("array_lengths").innerHTML = analyst_count;
+                </script>
+
+                <script>
+                    var scientist_count = parsed2.length;
+                    document.getElementById("array_lengths2").innerHTML = scientist_count;
+                </script>
+
+            </div>
+        <!--This is the div for the row-->
+        </div>
+    <!--This is the div for the container-->
+    </div> 
+
+    </body>
+</html>

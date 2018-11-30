@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-3Ivskwia8Fui5tbQi+RW4DgTkJ8d+hW7mLe7Yk89ibmD9482VECh0WFof8kIEjwI" crossorigin="anonymous">
+  <title>Data Jobs</title>
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+
+  <!-- Custom markers -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/leaflet.extra-markers.min.css">
+
+
+  <!--D3 cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+  <!-- Chart js cdn -->
+  <script src="https://cdnjs.com/libraries/Chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Data Jobs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#landing">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#scrape">Scrape</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#map-area">Map</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#graph">In Demand Skills</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="overview.html">Project Overview</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <section id="landing">
+  </section>
+
+  <section id="scrape">
+    <div class="jumbotron">
+    <h4>Click "Scrape" to get the most up-to-date data jobs from some of the most popular job sites (including Indeed, Monster, and LinkedIn) or click "Skip" to show recently scraped data jobs and pertinent information.</h4>
+    <p><em>Warning: the scrape may take several minutes!</em></p>
+
+    <a href="/scrape"><button type="button" class="btn btn-danger btn-lg">Scrape</button></a>
+    <a href="#job-pick"><button type="button" class="btn btn-success btn-lg">Skip</button></a>
+  </div>
+  </section>
+
+  <section id="job-pick">
+    <h1 class="text-center">Choose a profession</h1>
+    <p id="job-pick-info">The ability to program accompanied with an analytic mindset qualifies you for a number of different jobs in data, including but not limited to Data Analyst, Data Scientist, and Software Engineer. Select one of the following to scrape job information regarding that career:</p>
+    <div class="text-center">
+      <a href="#job-listing"><button type="button" class="btn btn-primary btn-lg job-option">Data Analyst</button></a>
+      <a href="#job-listing"><button type="button" class="btn btn-secondary btn-lg job-option">Data Scientist</button></a>
+    </div>
+    
+  </section>
+
+  <section id="job-listing">
+  </section>
+
+  <section id="map-area">
+  <h1 id="map-header" class="text-center">Distribution of Data Jobs in California</h1>
+  <div class="alert alert-dismissible alert-primary">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Tip:</strong> Use the collapsible menu in the upper right corner of the map to only view jobs pertaining to specific programming skills.
+  </div>
+  <!-- The div where we will inject our map -->
+
+  <div id="map"></div>
+  </section>
+
+  <section id="graph">
+    <h1 class="text-center">Most In Demand Data Skills</h1>
+    <div class="plot" id="com-plot"></div>
+    <div class="plot" id="ana-plot"></div>
+    <div class="plot" id="sci-plot"></div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!--   <script src="https://unpkg.com/scrollreveal"></script> -->
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+
+  <!-- Get minor updates and patch fixes within a major version -->
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14/dist/smooth-scroll.polyfills.min.js"></script>
+
+  <!-- Get patch fixes within a minor version -->
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14.0/dist/smooth-scroll.polyfills.min.js"></script>
+
+  <!-- Get a specific version -->
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+  <!-- API Key -->
+  <script type="text/javascript" src="../static/js/config.js"></script>
+  <!-- Our JS -->
+  <script type="text/javascript" src="../static/js/us-states.js"></script>
+  <script src="../static/js/leaflet.extra-markers.min.js"></script>
+  <script type="text/javascript" src="../static/js/app.js"></script>
+  
+  <!-- Start of Chart.js script -->
+  <div class="row">
+    <div class = "col-md-12">
+    <canvas id="myChartAnalyst" width="600" height="600"></canvas>
+
+    <script>
+    
+    var coll = '{{comp_analyst|tojson}}';
+
+    var par = JSON.parse(coll);
+
+    console.log(Object.keys(par));
+    console.log(Object.values(par));
+
+    var ctx = document.getElementById("myChartAnalyst").getContext('2d');
+    
+    data = {
+        datasets: [{
+            data:Object.values(par),
+            backgroundColor: 'rgba(0,100,200,0.9)'
+        }],
+        labels: Object.keys(par)
+    };
+
+    var options = {
+        responsive: true,
+        title: {
+            display: true,
+            position: "top",
+            text: "Doughnut Chart: Number of Data Analyst Postings per Company",
+            fontSize: 18,
+            fontColor: "#111"
+        },
+        legend: {
+            display: true,
+            position: "bottom",
+            labels: {
+                fontColor: "#333",
+                fontSize: 16
+            }
+        }
+    };
+
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: options
+    });
+
+    
+    </script>
+    </div>
+    
+</div>
+
+<!--New row div-->
+<div class="row">
+        <div class = "col-md-12">
+        <canvas id="myChartScientist" width="600" height="600"></canvas>
+
+        <script>
+        
+        var coll2 = '{{comp_scientist|tojson}}';
+
+        var par2 = JSON.parse(coll2);
+
+        console.log(Object.keys(par2));
+        console.log(Object.values(par2));
+
+        var ctx2 = document.getElementById("myChartScientist").getContext('2d');
+        
+        data = {
+            datasets: [{
+                data:Object.values(par2),
+                backgroundColor: 'rgba(200,100,20,0.9)'
+            }],
+            labels: Object.keys(par2)
+        };
+
+        var options = {
+            responsive: true,
+            title: {
+                display: true,
+                position: "top",
+                text: "Doughnut Chart: Number of Data Scientist Postings per Company",
+                fontSize: 18,
+                fontColor: "#111"
+            },
+            legend: {
+                display: true,
+                position: "bottom",
+                labels: {
+                    fontColor: "#333",
+                    fontSize: 16
+                }
+            }
+        };
+
+        var myDoughnutChart = new Chart(ctx2, {
+            type: 'doughnut',
+            data: data,
+            options: options
+        });
+
+        
+        </script>
+        </div>
+        
+    </div>
+</body>
+</html>
